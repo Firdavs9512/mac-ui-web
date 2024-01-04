@@ -24,9 +24,9 @@ jobs:
       - name: Build Front-end
         run: npm run build
 
-      - name: Install SSH key
-        run: echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
+      - name: Install sshpass
+        run: sudo apt-get install sshpass
 
       - name: Deploy to production
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} 'cd /var/www/html/mac-ui-web && git pull origin master && npm install && npm run build'
+          sshpass -p ${{ secrets.SSH_PASSWORD }} ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=quiet ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} 'cd /var/www/html/mac-ui-web && git pull origin master && chmod +x deploy.sh && ./deploy.sh'
