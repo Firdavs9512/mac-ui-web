@@ -1,0 +1,32 @@
+name: Deploy to production
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '20'
+
+    - name: Install npm packages
+      run: npm install
+
+    - name: Build Front-end
+      run: npm run build
+
+    - name: Install sshpass
+      run: sudo apt-get install sshpass
+
+    - name: Deploy to production
+      run: |
+        sshpass -p ${{ secrets.SSH_PASSWORD }} ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=quiet ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} 'cd /var/www/html/mac-ui-web && git pull origin master && chmod +x deploy.sh && ./deploy.sh'
