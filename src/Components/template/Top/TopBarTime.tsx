@@ -1,8 +1,17 @@
+import { useInterval } from "@/Hooks/use-interval";
+import { format } from "date-fns";
+import { useState } from "react";
 
 const TopBarTime = () => {
-  return (
-    <div>TopBarTime</div>
-  )
-}
+  const [time, setTime] = useState(new Date());
 
-export default TopBarTime
+  useInterval(() => setTime(new Date()), 2000);
+
+  return (
+    <div style={{ margin: "0 0.5rem" }}>
+      {format(time, "EEE MMM dd")}&nbsp; {format(time, "h:mm aa")}
+    </div>
+  );
+};
+
+export default TopBarTime;
