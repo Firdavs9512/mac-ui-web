@@ -1,5 +1,6 @@
 import BackgroundImage from "@/Components/template/BackgroundImage";
 import ContextMenu from "@/Components/template/ContextMenu";
+import Dock from "@/Components/template/Dock/Dock";
 import Loading from "@/Components/template/Loading";
 import TopBar from "@/Components/template/Top/TopBar";
 import WindowsArea from "@/Components/template/Window/WindowsArea";
@@ -13,6 +14,7 @@ export default function MacOs() {
         <ContextMenu outerRef={outerRef} />
         <TopBar />
         <WindowsArea />
+        <Dock />
       </main>
       <Loading />
 

@@ -94,3 +94,11 @@
     --app-color-light-contrast-hsl: 240, 24%, 100%;
   }
 }
+
+@layer components {
+  .tooltip-shadow {
+    --double-border: inset 0 0 0 0.9px hsla(var(--app-color-dark-hsl), 0.3),
+      0 0 0 1.2px hsla(var(--app-color-light-hsl), 0.3);
+    box-shadow: hsla(0deg, 0%, 0%, 30%) 0px 1px 5px 2px, var(--double-border);
+  }
+}
