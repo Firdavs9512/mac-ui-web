@@ -1,0 +1,27 @@
+.buttonsContainer {
+  @apply grid grid-cols-[repeat(4,1fr)] grid-rows-[repeat(5,1fr)] gap-px;
+}
+
+.buttonsContainer > button {
+  @apply text-[1.618rem] font-light text-[white] fill-[white];
+}
+
+.topRowButton {
+  @apply bg-[hsla(0,0%,35%,0.6)] active:bg-[hsla(0,0%,54%,0.6)];
+}
+
+.numberButton {
+  @apply bg-[hsla(0,0%,54%,0.6)] active:bg-[hsla(0,0%,90%,0.6)];
+}
+
+.operationButton {
+  @apply bg-[hsla(32,87%,56%,1)] active:bg-[hsla(32,68%,47%,1)];
+}
+
+.curvedBottomLeftButton {
+  @apply rounded-[0_0_0_0.7rem];
+}
+
+.curvedBottomRightButton {
+  @apply rounded-[0_0_0.7rem_0];
+}

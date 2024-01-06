@@ -10,6 +10,7 @@ import {
 import { useRef, useState } from "react";
 import useDockHoverAnimation from "./use-dock-hover-animation";
 import { motion } from "framer-motion";
+import { useAtom } from "jotai";
 
 interface DockItemProps extends AppConfig {
   mouseX: MotionValue<number | null>;
@@ -27,7 +28,7 @@ const DockItem = ({
   shouldOpenWindow,
 }: DockItemProps) => {
   const [, setOpenApps] = useImmerAtom(openAppsAtom);
-  const [, setActiveApp] = useImmerAtom(activeAppsAtom);
+  const [, setActiveApp] = useAtom(activeAppsAtom);
   const [animateObj, setAnimateObj] = useState({
     translateY: ["0%", "0%", "0%"],
   });
@@ -45,7 +46,6 @@ const DockItem = ({
       draft[app] = true;
       return draft;
     });
-    // @ts-ignore
     setActiveApp(app);
   };
 
@@ -58,13 +58,8 @@ const DockItem = ({
       <p className="whitespace-nowrap absolute top-[-35%] left-0 right-0 bg-light-hsl/50 backdrop-blur-[5px] py-2 px-3 rounded-md tooltip-shadow group-hover:block group-focus-visible:block hover:block focus-visible:block hidden text-light-contrast font-sans text-[0.9rem] tracking-[0.4px]">
         {title}
       </p>
-
       <motion.span
-        onTap={() =>
-          setAnimateObj({
-            translateY: ["0%", "-39.2%", "0%"],
-          })
-        }
+        onTap={() => setAnimateObj({ translateY: ["0%", "-39.2%", "0%"] })}
         initial={false}
         animate={animateObj}
         transition={{

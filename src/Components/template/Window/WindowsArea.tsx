@@ -5,7 +5,9 @@ import {
   openApps as openAppsAtom,
 } from "@/Store/openApps";
 import { useAtom } from "jotai";
-import { Suspense, useEffect } from "react";
+import { Suspense, lazy, useEffect } from "react";
+
+const Window = lazy(() => import('./Window'));
 
 const WindowsArea = () => {
   const [openApps] = useAtom(openAppsAtom);

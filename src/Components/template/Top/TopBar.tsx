@@ -4,7 +4,7 @@ import TopBarTime from "./TopBarTime";
 
 const TopBar = () => {
   return (
-    <header className="flex w-full h-[1.4rem] items-center bg-light-hsl bg-opacity-30 text-light-contrast fill-light-contrast backdrop-blur-md">
+    <header id="top-bar" className="flex w-full h-[1.4rem] items-center bg-light-hsl bg-opacity-30 text-light-contrast fill-light-contrast backdrop-blur-md">
       <MenuBar />
       <span style={{ flex: "1 1 auto" }} />
 
