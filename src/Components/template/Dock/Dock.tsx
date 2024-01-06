@@ -16,9 +16,7 @@ export default function Dock() {
       className="fixed mb-[0.3rem] bottom-0 left-0 z-[9990] w-full h-[5.2rem] p-[0.4rem] flex justify-center"
     >
       <div
-        // className="bg-light-hsl/40 relative p-[0.3rem] rounded-[1.2rem] h-full flex items-center before:content-[''] before:w-full before:h-full before:border-inherit before:backdrop-blur-[10px] before:absolute before:top-0 before:left-0 before:z-[-1] dock-el-shadow"
-        // className="dockEl"
-        className="bg-light-hsl/40 dock-el-shadow relative p-[0.3rem] rounded-[1.2rem] h-full flex items-end before:content-[''] before:w-full before:h-full before:border-inherit before:"
+        className='bg-[hsla(var(--app-color-light-hsl),0.4)] shadow-[inset_0_0_0_0.2px_hsla(var(--app-color-grey-100-hsl),0.7),0_0_0_0.2px_hsla(var(--app-color-grey-900-hsl),0.7),hsla(0,0%,0%,0.3)_2px_5px_19px_7px] relative h-full flex items-end p-[0.3rem] rounded-[1.2rem] before:content-[""] before:w-full before:h-full before:backdrop-blur-[10px] before:absolute before:z-[-1] before:border-[inherit] before:left-0 before:top-0'
         onMouseMove={(e) => mouseX.set(e.nativeEvent.x)}
         onMouseLeave={() => mouseX.set(null)}
       >
