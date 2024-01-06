@@ -45,16 +45,17 @@ const DockItem = ({
       draft[app] = true;
       return draft;
     });
+    // @ts-ignore
     setActiveApp(app);
   };
 
   return (
     <button
-      className="h-full w-auto cursor-app-default transition-all duration-200 origin-bottom flex flex-col justify-end relative"
+      className="h-full !w-auto cursor-app-default transition-all duration-200 origin-bottom flex flex-col justify-end relative group items-center dock-el-animation-top"
       aria-label={`launch-${title}`}
       onClick={openApp}
     >
-      <p className="whitespace-nowrap absolute top-[-35%] bg-light-hsl/50 backdrop-blur-[5px] py-2 px-3 rounded-md tooltip-shadow hover:block focus-visible:block hidden text-light-contrast font-sans text-[0.9rem] tracking-[0.4px]">
+      <p className="whitespace-nowrap absolute top-[-35%] left-0 right-0 bg-light-hsl/50 backdrop-blur-[5px] py-2 px-3 rounded-md tooltip-shadow group-hover:block group-focus-visible:block hover:block focus-visible:block hidden text-light-contrast font-sans text-[0.9rem] tracking-[0.4px]">
         {title}
       </p>
 

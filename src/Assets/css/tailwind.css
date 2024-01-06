@@ -101,4 +101,19 @@
       0 0 0 1.2px hsla(var(--app-color-light-hsl), 0.3);
     box-shadow: hsla(0deg, 0%, 0%, 30%) 0px 1px 5px 2px, var(--double-border);
   }
+
+  .dock-el-shadow {
+    box-shadow: inset 0 0 0 0.2px hsla(var(--app-color-grey-100-hsl), 0.7),
+      0 0 0 0.2px hsla(var(--app-color-grey-900-hsl), 0.7),
+      hsla(0, 0%, 0%, 0.3) 2px 5px 19px 7px;
+  }
+
+  .dock-el-animation-top {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+  }
 }
