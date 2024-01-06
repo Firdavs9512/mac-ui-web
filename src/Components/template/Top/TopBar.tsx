@@ -10,7 +10,7 @@ const TopBar = () => {
 
       <ActionCenterToggle />
 
-      <button className="font-medium text-[0.8rem] font-sans tracking-[0.3px] relative h-full inline-flex items-center justify-center shadow-sm">
+      <button className="font-medium text-[0.8rem] font-sans tracking-[0.3px] relative h-full inline-flex items-center justify-center shadow-sm cursor-app-default">
         <TopBarTime />
       </button>
     </header>

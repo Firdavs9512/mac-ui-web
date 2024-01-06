@@ -17,7 +17,7 @@ export const Menu = ({ menu }: MenuProps) => {
         options={{ direction: "vertical", loopAround: true }}
       >
         {Object.keys(menu).map((key) => (
-          <>
+          <div key={key}>
             <MenuItemButton
               key={key}
               className={cn("top-menu-item", menu[key].disabled && "disabled")}
@@ -26,9 +26,12 @@ export const Menu = ({ menu }: MenuProps) => {
               {menu[key].title}
             </MenuItemButton>
             {menu[key].breakAfter && (
-              <div key={`divider-${key}`} className="w-full h-[0.2px] bg-dark-hsl/20 my-[2px]" />
+              <div
+                key={`divider-${key}`}
+                className="w-full h-[0.2px] bg-dark-hsl/20 my-[2px]"
+              />
             )}
-          </>
+          </div>
         ))}
       </RovingTabIndexProvider>
     </div>
