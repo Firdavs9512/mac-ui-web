@@ -5,7 +5,7 @@ import { randInt } from "@/Utils/random-int";
 import { useAtom } from "jotai";
 import { Suspense, useMemo, useRef, useState } from "react";
 import { Rnd } from "react-rnd";
-import { activeAppZIndex } from "@/Store/openApps";
+// import { activeAppZIndex } from "@/Store/openApps";
 import cn from "@/Utils/class-names";
 import TrafficLights from "./TrafficLights";
 
@@ -18,22 +18,26 @@ class WindowRnd extends Rnd {
 }
 
 const Window = ({ app }: WindowProps) => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  // const containerRef = useRef<HTMLDivElement>(null);
   const windowRef = useRef<WindowRnd>(null);
 
-  const [activeAppIndex] = useAtom(activeAppZIndex);
+  // const [activeAppIndex] = useAtom(activeAppZIndex);
   const [activeApp, setActiveApp] = useAtom(activeApps);
 
-  const [appZIndex, setAppZIndex] = useState(0);
-  const [isBeingDragged, setIsBeingDragged] = useState(false);
+  // const [appZIndex, setAppZIndex] = useState(0);
+  const [appZIndex] = useState(0);
+  // const [isBeingDragged, setIsBeingDragged] = useState(false);
+  const [, setIsBeingDragged] = useState(false);
 
   const randX = useMemo(() => randInt(-600, 600), []);
   const randY = useMemo(() => randInt(-100, 100), []);
 
   const maximizeApp = useMaximizeWindow(windowRef);
 
-  const { resizable, height, width, trafficLightsStyle, expandable } =
-    appsConfig[app];
+  // const { resizable, height, width, trafficLightsStyle, expandable } =
+  //   appsConfig[app];
+
+  const { resizable, height, width, trafficLightsStyle } = appsConfig[app];
 
   const focusCurrentApp = () => {
     setActiveApp(app);
