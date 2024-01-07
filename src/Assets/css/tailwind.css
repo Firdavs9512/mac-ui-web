@@ -114,4 +114,45 @@
   .window-trafficLightsContainer {
     box-shadow: none !important;
   }
+
+  /* Traffic lights */
+  .traffic-lights-container {
+    @apply grid grid-cols-[repeat(3,var(--button-size))] items-center gap-[0.6rem] h-full;
+    --button-size: 0.8rem;
+  }
+
+  .traffic-lights-container.unFocussed .trafficLight {
+    --bgcolor: hsla(var(--app-color-dark-hsl), 0.3);
+    --border-color: hsla(var(--app-color-dark-hsl), 0.5);
+  }
+  
+  .traffic-lights-container svg {
+    @apply invisible;
+  }
+  
+  .traffic-lights-container:hover svg {
+    @apply visible mx-auto;
+  }
+  
+  .trafficLight {
+    @apply h-[var(--button-size)] w-[var(--button-size)] bg-[color:var(--bgcolor)] shadow-[0_0_0_0.5px_var(--border-color)] rounded-[50%];
+  }
+  
+  .closeLight {
+    @apply h-[var(--button-size)] w-[var(--button-size)] bg-[color:var(--bgcolor)] shadow-[0_0_0_0.5px_var(--border-color)] rounded-[50%];
+    --bgcolor: #ff5f56;
+    --border-color: #e0443e;
+  }
+  
+  .stretchLight {
+    @apply rotate-90 h-[var(--button-size)] w-[var(--button-size)] bg-[color:var(--bgcolor)] shadow-[0_0_0_0.5px_var(--border-color)] rounded-[50%];
+    --bgcolor: #27c93f;
+    --border-color: #1aab29;
+  }
+  
+  .minimizeLight {
+    @apply h-[var(--button-size)] w-[var(--button-size)] bg-[color:var(--bgcolor)] shadow-[0_0_0_0.5px_var(--border-color)] rounded-[50%];
+    --bgcolor: #ffbd2e;
+    --border-color: #dea123;
+  }
 }

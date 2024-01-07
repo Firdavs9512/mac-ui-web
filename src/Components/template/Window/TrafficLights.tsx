@@ -25,8 +25,19 @@ const TrafficLights = ({ app, className }: TrafficLightProps) => {
   const resizeApp = () => {};
 
   return (
-    <div className={cn("", app !== activeApp, className)}>
-      <button className="" onClick={closeApp}>
+    <div
+      className={cn(
+        "traffic-lights-container",
+        app !== activeApp && "unFocussed",
+        className
+      )}
+      style={
+        {
+          "--button-size": "0.8rem",
+        } as React.CSSProperties
+      }
+    >
+      <button className="closeLight" onClick={closeApp}>
         <svg
           width={7}
           height={7}
@@ -41,7 +52,7 @@ const TrafficLights = ({ app, className }: TrafficLightProps) => {
           />
         </svg>
       </button>
-      <button className="" onClick={hiddenApp}>
+      <button className="minimizeLight" onClick={hiddenApp}>
         <svg
           width={6}
           height={1}
@@ -56,7 +67,7 @@ const TrafficLights = ({ app, className }: TrafficLightProps) => {
           />
         </svg>
       </button>
-      <button className="" onClick={resizeApp}>
+      <button className="stretchLight" onClick={resizeApp}>
         <svg
           viewBox="0 0 13 13"
           xmlns="http://www.w3.org/2000/svg"
