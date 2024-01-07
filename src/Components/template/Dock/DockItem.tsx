@@ -29,9 +29,7 @@ const DockItem = ({
 }: DockItemProps) => {
   const [, setOpenApps] = useImmerAtom(openAppsAtom);
   const [, setActiveApp] = useAtom(activeAppsAtom);
-  const [animateObj, setAnimateObj] = useState({
-    translateY: ["0%", "0%", "0%"],
-  });
+  const [animateObj] = useState(["0%", "0%", "0%"]);
 
   const imgRef = useRef<HTMLImageElement>(null);
 
@@ -59,9 +57,11 @@ const DockItem = ({
         {title}
       </p>
       <motion.span
-        onTap={() => setAnimateObj({ translateY: ["0%", "-39.2%", "0%"] })}
+        // onTap={() => setAnimateObj(["0%", "-39%", "0%"])}
         initial={false}
-        animate={animateObj}
+        animate={{
+          translateY: animateObj,
+        }}
         transition={{
           type: "spring",
           duration: 0.7,
