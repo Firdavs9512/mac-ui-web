@@ -7,7 +7,7 @@
 }
 
 .topRowButton {
-  @apply bg-[hsla(0,0%,35%,0.6)] active:bg-[hsla(0,0%,54%,0.6)];
+  @apply bg-[hsla(0,0%,35%,0.6)] active:bg-[hsla(0,0%,54%,0.6)] flex items-center justify-center;
 }
 
 .numberButton {
@@ -15,7 +15,7 @@
 }
 
 .operationButton {
-  @apply bg-[hsla(32,87%,56%,1)] active:bg-[hsla(32,68%,47%,1)];
+  @apply bg-[hsla(32,87%,56%,1)] active:bg-[hsla(32,68%,47%,1)] flex items-center justify-center;
 }
 
 .curvedBottomLeftButton {
