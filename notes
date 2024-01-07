@@ -3,5 +3,12 @@
 -- app top buttonsga style yozish kerak
 -- dockdagi applarni bosgan vaqtda frame-motion xatosi bor 
 -- yangi ochilgan program istagan joyida chiqyapti shuni tug'irlash kerak
-- app yopilgan vaqtda animation bilan yopilishi kerak
+-- app yopilgan vaqtda animation bilan yopilishi kerak
 - calculator ichidagi buttonlarda style qo'yish kerak
+- system loading bulgandagi animationni yangilash kerak
+- ekranga mouse bilan birlashtirish animationni qushish kerak
+- about this mac bulimi uchun app tayorlash kerak
+- logout ekranini tayorlash kerak.
+- app hidden functioni yaratish kerak
+- top bar menusinidagi o'ng tarafdagi barni yaratish kerak
+- app orqaga biroz shadow berish kerak

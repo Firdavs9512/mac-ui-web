@@ -13,3 +13,6 @@ export const activeApps = atom<TAppConfig>("calculator");
 
 // Default z index
 export const activeAppZIndex = atom<number>(-2);
+
+// App close animation
+export const appCloseAnimation = atom<boolean>(false);

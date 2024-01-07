@@ -1,4 +1,9 @@
-import { TAppConfig, activeApps, openApps } from "@/Store/openApps";
+import {
+  TAppConfig,
+  activeApps,
+  appCloseAnimation,
+  openApps,
+} from "@/Store/openApps";
 import cn from "@/Utils/class-names";
 import { useAtom } from "jotai";
 import { useImmerAtom } from "jotai-immer";
@@ -12,12 +17,17 @@ type TrafficLightProps = {
 const TrafficLights = ({ app, className }: TrafficLightProps) => {
   const [, setOpenApp] = useImmerAtom(openApps);
   const [activeApp] = useAtom(activeApps);
+  const [, setAnimationClose] = useAtom(appCloseAnimation);
 
   const closeApp = () => {
-    setOpenApp((draft: any) => {
-      draft[app] = false;
-      return draft;
-    });
+    setAnimationClose(true);
+    setTimeout(() => {
+      setOpenApp((draft: any) => {
+        draft[app] = false;
+        return draft;
+      });
+      setAnimationClose(false);
+    }, 300);
   };
 
   const hiddenApp = () => {};

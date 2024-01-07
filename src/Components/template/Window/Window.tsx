@@ -1,6 +1,11 @@
 import { appsConfig } from "@/Config/appsConfig";
 import useMaximizeWindow from "@/Hooks/use-maximize-window";
-import { TAppConfig, activeAppZIndex, activeApps } from "@/Store/openApps";
+import {
+  TAppConfig,
+  activeAppZIndex,
+  activeApps,
+  appCloseAnimation,
+} from "@/Store/openApps";
 import { useAtom } from "jotai";
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { Rnd } from "react-rnd";
@@ -8,6 +13,7 @@ import cn from "@/Utils/class-names";
 import TrafficLights from "./TrafficLights";
 import { AppNexus } from "./AppNexus";
 import _ from "lodash";
+import { motion } from "framer-motion";
 
 type WindowProps = {
   app: TAppConfig;
@@ -23,6 +29,7 @@ const Window = ({ app }: WindowProps) => {
 
   const [activeAppIndex] = useAtom(activeAppZIndex);
   const [activeApp, setActiveApp] = useAtom(activeApps);
+  const [animationClose, setAnimationClose] = useAtom(appCloseAnimation);
 
   const [appZIndex, setAppZIndex] = useState(0);
   const [isBeingDragged, setIsBeingDragged] = useState(false);
@@ -50,7 +57,7 @@ const Window = ({ app }: WindowProps) => {
   return (
     <Rnd
       ref={windowRef}
-      style={{ zIndex: appZIndex }}
+      style={{ zIndex: appZIndex, width: width, height: height }}
       default={{
         height,
         width,
@@ -68,11 +75,19 @@ const Window = ({ app }: WindowProps) => {
       }}
       onDragStop={() => setIsBeingDragged(false)}
     >
-      <section
+      <motion.section
         className={cn(
           "w-full h-full grid grid-rows-[1fr] relative shadow-[0_33px_81px_rgba(0,0,0,0.31)] cursor-app-default rounded-xl dark:shadow-[inset_0_0_0_0.9px_hsla(var(--app-color-dark-hsl),0.3),0_0_0_1px_hsla(var(--app-color-light-hsl),0.5)]",
           "backdrop-blur-lg "
         )}
+        initial={{ opacity: 1 }}
+        animate={animationClose ? { opacity: 0 } : { opacity: 1 }}
+        transition={{ duration: 0.3 }}
+        onAnimationComplete={() => {
+          if (animationClose) {
+            setAnimationClose(false);
+          }
+        }}
       >
         <div
           style={trafficLightsStyle}
@@ -128,7 +143,7 @@ const Window = ({ app }: WindowProps) => {
         >
           <AppNexus app={app} isBeingDragged={isBeingDragged} />
         </Suspense>
-      </section>
+      </motion.section>
     </Rnd>
   );
 };
