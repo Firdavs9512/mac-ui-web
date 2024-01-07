@@ -1,13 +1,13 @@
 import { appsConfig } from "@/Config/appsConfig";
 import useMaximizeWindow from "@/Hooks/use-maximize-window";
 import { TAppConfig, activeAppZIndex, activeApps } from "@/Store/openApps";
-import { randInt } from "@/Utils/random-int";
 import { useAtom } from "jotai";
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { Rnd } from "react-rnd";
 import cn from "@/Utils/class-names";
 import TrafficLights from "./TrafficLights";
 import { AppNexus } from "./AppNexus";
+import _ from "lodash";
 
 type WindowProps = {
   app: TAppConfig;
@@ -27,8 +27,8 @@ const Window = ({ app }: WindowProps) => {
   const [appZIndex, setAppZIndex] = useState(0);
   const [isBeingDragged, setIsBeingDragged] = useState(false);
 
-  const randX = useMemo(() => randInt(-600, 600), []);
-  const randY = useMemo(() => randInt(-100, 100), []);
+  const randX = useMemo(() => _.random(-600, 900), []);
+  const randY = useMemo(() => _.random(-100, 100), []);
 
   const maximizeApp = useMaximizeWindow(windowRef);
 
@@ -54,7 +54,7 @@ const Window = ({ app }: WindowProps) => {
       default={{
         height,
         width,
-        x: ((3 / 2) * document.body.clientWidth + randX) / 2,
+        x: (document.body.clientWidth / 2 + randX) / 2,
         y: (100 + randY) / 2,
       }}
       enableResizing={resizable}
