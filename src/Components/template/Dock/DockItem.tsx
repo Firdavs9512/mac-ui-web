@@ -29,7 +29,15 @@ const DockItem = ({
 }: DockItemProps) => {
   const [, setOpenApps] = useImmerAtom(openAppsAtom);
   const [, setActiveApp] = useAtom(activeAppsAtom);
-  const [animateObj] = useState(["0%", "0%", "0%"]);
+
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleClick = () => {
+    setIsClicked(true);
+    setTimeout(() => {
+      setIsClicked(false);
+    }, 350);
+  };
 
   const imgRef = useRef<HTMLImageElement>(null);
 
@@ -57,11 +65,13 @@ const DockItem = ({
         {title}
       </p>
       <motion.span
-        // onTap={() => setAnimateObj(["0%", "-39%", "0%"])}
+        onTap={handleClick}
         initial={false}
-        animate={{
-          translateY: animateObj,
-        }}
+        animate={
+          isClicked
+            ? { translateY: "-39%" } // Change to "-39%" on click
+            : { translateY: "0%" } // Revert to "0%" on second click
+        }
         transition={{
           type: "spring",
           duration: 0.7,
