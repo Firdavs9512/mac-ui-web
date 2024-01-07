@@ -30,7 +30,7 @@ const Calculator = () => {
   }
 
   return (
-    <section className="border-inherit h-full w-full bg-[hsla(0,0%,27%,0.7)] backdrop-blur-2xl grid grid-rows-[auto_auto_1fr] font-sans">
+    <section className="border-inherit rounded-[inherit] h-full w-full bg-[hsla(0,0%,27%,0.7)] backdrop-blur-2xl grid grid-rows-[auto_auto_1fr] font-sans">
       <header className={cn("app-window-drag-handle", "p-4")} />
       <section className="min-h-[4rem] text-5xl text-[white] text-end font-extralight overflow-auto px-4 py-2">
         {result}
