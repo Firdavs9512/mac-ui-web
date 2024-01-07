@@ -1,6 +1,7 @@
-- app yuklanayotgan vaqtida loading quyish kerak
+-- app yuklanayotgan vaqtida loading quyish kerak
 - calculator border qo'yish kerak
 -- app top buttonsga style yozish kerak
 -- dockdagi applarni bosgan vaqtda frame-motion xatosi bor 
 - yangi ochilgan program istagan joyida chiqyapti shuni tug'irlash kerak
 - app yopilgan vaqtda animation bilan yopilishi kerak
+- calculator ichidagi buttonlarda style qo'yish kerak

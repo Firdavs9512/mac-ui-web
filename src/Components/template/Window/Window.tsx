@@ -68,7 +68,12 @@ const Window = ({ app }: WindowProps) => {
       }}
       onDragStop={() => setIsBeingDragged(false)}
     >
-      <section className="w-full h-full grid grid-rows-[1fr] relative shadow-[0_33px_81px_rgba(0,0,0,0.31)] cursor-app-default rounded-xl dark:shadow-[inset_0_0_0_0.9px_hsla(var(--app-color-dark-hsl),0.3),0_0_0_1px_hsla(var(--app-color-light-hsl),0.5)] dark:rounded-[inherit]">
+      <section
+        className={cn(
+          "w-full h-full grid grid-rows-[1fr] relative shadow-[0_33px_81px_rgba(0,0,0,0.31)] cursor-app-default rounded-xl dark:shadow-[inset_0_0_0_0.9px_hsla(var(--app-color-dark-hsl),0.3),0_0_0_1px_hsla(var(--app-color-light-hsl),0.5)]",
+          "backdrop-blur-lg "
+        )}
+      >
         <div
           style={trafficLightsStyle}
           className={cn(
@@ -78,7 +83,49 @@ const Window = ({ app }: WindowProps) => {
         >
           <TrafficLights app={app} onMaximizeClick={maximizeApp} />
         </div>
-        <Suspense fallback={<span></span>}>
+        <Suspense
+          fallback={
+            <div className="w-full -h-full flex justify-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                data-testid="loader"
+                className="text-current w-6 h-auto mx-auto dark:text-white"
+              >
+                <g>
+                  <path d="M11 1h2v5h-2z" opacity="0.14"></path>
+                  <path
+                    d="m16.634 1.974 1.732 1-2.5 4.33-1.732-1z"
+                    opacity="0.29"
+                  ></path>
+                  <path
+                    d="m21.026 5.634 1 1.732-4.33 2.5-1-1.732z"
+                    opacity="0.43"
+                  ></path>
+                  <path d="M23 11v2h-5v-2z" opacity="0.57"></path>
+                  <path
+                    d="m22.026 16.634-1 1.732-4.33-2.5 1-1.732z"
+                    opacity="0.71"
+                  ></path>
+                  <path
+                    d="m18.366 21.026-1.732 1-2.5-4.33 1.732-1z"
+                    opacity="0.86"
+                  ></path>
+                  <path d="M13 23h-2v-5h2z"></path>
+                  <animateTransform
+                    attributeName="transform"
+                    calcMode="discrete"
+                    dur="0.75s"
+                    repeatCount="indefinite"
+                    type="rotate"
+                    values="0 12 12;30 12 12;60 12 12;90 12 12;120 12 12;150 12 12;180 12 12;210 12 12;240 12 12;270 12 12;300 12 12;330 12 12;360 12 12"
+                  ></animateTransform>
+                </g>
+              </svg>
+            </div>
+          }
+        >
           <AppNexus app={app} isBeingDragged={isBeingDragged} />
         </Suspense>
       </section>
